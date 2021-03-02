@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sni.service.dao.LogExceptionMapper">
+  <resultMap id="BaseResultMap" type="com.sni.service.model.LogException">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="exc_method" jdbcType="VARCHAR" property="excMethod" />
+    <result column="exc_req_time" jdbcType="TIMESTAMP" property="excReqTime" />
+    <result column="exc_req_param" jdbcType="VARCHAR" property="excReqParam" />
+    <result column="exc_name" jdbcType="VARCHAR" property="excName" />
+    <result column="exc_message" jdbcType="LONGVARCHAR" property="excMessage" />
+    <result column="exc_ip" jdbcType="VARCHAR" property="excIp" />
+    <result column="exc_user_id" jdbcType="INTEGER" property="excUserId" />
+    <result column="exc_user_name" jdbcType="VARCHAR" property="excUserName" />
+    <result column="exc_uri" jdbcType="VARCHAR" property="excUri" />
+    <result column="exc_version" jdbcType="VARCHAR" property="excVersion" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, exc_method, exc_req_time, exc_req_param, exc_name, exc_ip, exc_user_id, exc_user_name, 
+    exc_uri, exc_version
+  </sql>
+  <sql id="Blob_Column_List">
+    exc_message
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from log_exception
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from log_exception
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sni.service.model.LogException">
+    insert into log_exception (id, exc_method, exc_req_time, 
+      exc_req_param, exc_name, exc_ip, 
+      exc_user_id, exc_user_name, exc_uri, 
+      exc_version, exc_message)
+    values (#{id,jdbcType=INTEGER}, #{excMethod,jdbcType=VARCHAR}, #{excReqTime,jdbcType=TIMESTAMP}, 
+      #{excReqParam,jdbcType=VARCHAR}, #{excName,jdbcType=VARCHAR}, #{excIp,jdbcType=VARCHAR}, 
+      #{excUserId,jdbcType=INTEGER}, #{excUserName,jdbcType=VARCHAR}, #{excUri,jdbcType=VARCHAR}, 
+      #{excVersion,jdbcType=VARCHAR}, #{excMessage,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sni.service.model.LogException">
+    insert into log_exception
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="excMethod != null">
+        exc_method,
+      </if>
+      <if test="excReqTime != null">
+        exc_req_time,
+      </if>
+      <if test="excReqParam != null">
+        exc_req_param,
+      </if>
+      <if test="excName != null">
+        exc_name,
+      </if>
+      <if test="excIp != null">
+        exc_ip,
+      </if>
+      <if test="excUserId != null">
+        exc_user_id,
+      </if>
+      <if test="excUserName != null">
+        exc_user_name,
+      </if>
+      <if test="excUri != null">
+        exc_uri,
+      </if>
+      <if test="excVersion != null">
+        exc_version,
+      </if>
+      <if test="excMessage != null">
+        exc_message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="excMethod != null">
+        #{excMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="excReqTime != null">
+        #{excReqTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="excReqParam != null">
+        #{excReqParam,jdbcType=VARCHAR},
+      </if>
+      <if test="excName != null">
+        #{excName,jdbcType=VARCHAR},
+      </if>
+      <if test="excIp != null">
+        #{excIp,jdbcType=VARCHAR},
+      </if>
+      <if test="excUserId != null">
+        #{excUserId,jdbcType=INTEGER},
+      </if>
+      <if test="excUserName != null">
+        #{excUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="excUri != null">
+        #{excUri,jdbcType=VARCHAR},
+      </if>
+      <if test="excVersion != null">
+        #{excVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="excMessage != null">
+        #{excMessage,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sni.service.model.LogException">
+    update log_exception
+    <set>
+      <if test="excMethod != null">
+        exc_method = #{excMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="excReqTime != null">
+        exc_req_time = #{excReqTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="excReqParam != null">
+        exc_req_param = #{excReqParam,jdbcType=VARCHAR},
+      </if>
+      <if test="excName != null">
+        exc_name = #{excName,jdbcType=VARCHAR},
+      </if>
+      <if test="excIp != null">
+        exc_ip = #{excIp,jdbcType=VARCHAR},
+      </if>
+      <if test="excUserId != null">
+        exc_user_id = #{excUserId,jdbcType=INTEGER},
+      </if>
+      <if test="excUserName != null">
+        exc_user_name = #{excUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="excUri != null">
+        exc_uri = #{excUri,jdbcType=VARCHAR},
+      </if>
+      <if test="excVersion != null">
+        exc_version = #{excVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="excMessage != null">
+        exc_message = #{excMessage,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sni.service.model.LogException">
+    update log_exception
+    set exc_method = #{excMethod,jdbcType=VARCHAR},
+      exc_req_time = #{excReqTime,jdbcType=TIMESTAMP},
+      exc_req_param = #{excReqParam,jdbcType=VARCHAR},
+      exc_name = #{excName,jdbcType=VARCHAR},
+      exc_ip = #{excIp,jdbcType=VARCHAR},
+      exc_user_id = #{excUserId,jdbcType=INTEGER},
+      exc_user_name = #{excUserName,jdbcType=VARCHAR},
+      exc_uri = #{excUri,jdbcType=VARCHAR},
+      exc_version = #{excVersion,jdbcType=VARCHAR},
+      exc_message = #{excMessage,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sni.service.model.LogException">
+    update log_exception
+    set exc_method = #{excMethod,jdbcType=VARCHAR},
+      exc_req_time = #{excReqTime,jdbcType=TIMESTAMP},
+      exc_req_param = #{excReqParam,jdbcType=VARCHAR},
+      exc_name = #{excName,jdbcType=VARCHAR},
+      exc_ip = #{excIp,jdbcType=VARCHAR},
+      exc_user_id = #{excUserId,jdbcType=INTEGER},
+      exc_user_name = #{excUserName,jdbcType=VARCHAR},
+      exc_uri = #{excUri,jdbcType=VARCHAR},
+      exc_version = #{excVersion,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

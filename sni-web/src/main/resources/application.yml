@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+project:
+  version: 1.0
+
+zookeeper:
+  address: zookeeper://127.0.0.1:2181
+  group: sni
+  timeout: 60000
+
+shiro:
+  loginUrl: # 认证不通过的页面
+  unauthorizedUrl: # 授权不通过的页面
+
+jwt:
+  secretKey: 34hsjhdsj3

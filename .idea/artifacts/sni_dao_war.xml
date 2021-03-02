@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sni-dao:war">
+    <output-path>$PROJECT_DIR$/sni-dao/target</output-path>
+    <root id="archive" name="sni-dao-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="sni-dao:war exploded" />
+    </root>
+  </artifact>
+</component>

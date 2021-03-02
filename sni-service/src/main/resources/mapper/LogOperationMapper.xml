@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sni.service.dao.LogOperationMapper">
+  <resultMap id="BaseResultMap" type="com.sni.service.model.LogOperation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="op_module" jdbcType="VARCHAR" property="opModule" />
+    <result column="op_type" jdbcType="VARCHAR" property="opType" />
+    <result column="op_desc" jdbcType="VARCHAR" property="opDesc" />
+    <result column="op_method" jdbcType="VARCHAR" property="opMethod" />
+    <result column="op_req_time" jdbcType="TIMESTAMP" property="opReqTime" />
+    <result column="op_req_param" jdbcType="VARCHAR" property="opReqParam" />
+    <result column="op_resp_time" jdbcType="TIMESTAMP" property="opRespTime" />
+    <result column="op_resp_param" jdbcType="LONGVARCHAR" property="opRespParam" />
+    <result column="op_ip" jdbcType="VARCHAR" property="opIp" />
+    <result column="op_user_id" jdbcType="INTEGER" property="opUserId" />
+    <result column="op_user_name" jdbcType="VARCHAR" property="opUserName" />
+    <result column="op_uri" jdbcType="VARCHAR" property="opUri" />
+    <result column="op_version" jdbcType="VARCHAR" property="opVersion" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, op_module, op_type, op_desc, op_method, op_req_time, op_req_param, op_resp_time, 
+    op_resp_param, op_ip, op_user_id, op_user_name, op_uri, op_version
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from log_operation
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from log_operation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from log_operation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sni.service.model.LogOperation">
+    insert into log_operation (id, op_module, op_type, 
+      op_desc, op_method, op_req_time, 
+      op_req_param, op_resp_time, op_resp_param, 
+      op_ip, op_user_id, op_user_name, 
+      op_uri, op_version)
+    values (#{id,jdbcType=INTEGER}, #{opModule,jdbcType=VARCHAR}, #{opType,jdbcType=VARCHAR}, 
+      #{opDesc,jdbcType=VARCHAR}, #{opMethod,jdbcType=VARCHAR}, #{opReqTime,jdbcType=TIMESTAMP}, 
+      #{opReqParam,jdbcType=VARCHAR}, #{opRespTime,jdbcType=TIMESTAMP}, #{opRespParam,jdbcType=VARCHAR}, 
+      #{opIp,jdbcType=VARCHAR}, #{opUserId,jdbcType=INTEGER}, #{opUserName,jdbcType=VARCHAR}, 
+      #{opUri,jdbcType=VARCHAR}, #{opVersion,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sni.service.model.LogOperation">
+    insert into log_operation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="opModule != null">
+        op_module,
+      </if>
+      <if test="opType != null">
+        op_type,
+      </if>
+      <if test="opDesc != null">
+        op_desc,
+      </if>
+      <if test="opMethod != null">
+        op_method,
+      </if>
+      <if test="opReqTime != null">
+        op_req_time,
+      </if>
+      <if test="opReqParam != null">
+        op_req_param,
+      </if>
+      <if test="opRespTime != null">
+        op_resp_time,
+      </if>
+      <if test="opRespParam != null">
+        op_resp_param,
+      </if>
+      <if test="opIp != null">
+        op_ip,
+      </if>
+      <if test="opUserId != null">
+        op_user_id,
+      </if>
+      <if test="opUserName != null">
+        op_user_name,
+      </if>
+      <if test="opUri != null">
+        op_uri,
+      </if>
+      <if test="opVersion != null">
+        op_version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="opModule != null">
+        #{opModule,jdbcType=VARCHAR},
+      </if>
+      <if test="opType != null">
+        #{opType,jdbcType=VARCHAR},
+      </if>
+      <if test="opDesc != null">
+        #{opDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="opMethod != null">
+        #{opMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="opReqTime != null">
+        #{opReqTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opReqParam != null">
+        #{opReqParam,jdbcType=VARCHAR},
+      </if>
+      <if test="opRespTime != null">
+        #{opRespTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opRespParam != null">
+        #{opRespParam,jdbcType=VARCHAR},
+      </if>
+      <if test="opIp != null">
+        #{opIp,jdbcType=VARCHAR},
+      </if>
+      <if test="opUserId != null">
+        #{opUserId,jdbcType=INTEGER},
+      </if>
+      <if test="opUserName != null">
+        #{opUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="opUri != null">
+        #{opUri,jdbcType=VARCHAR},
+      </if>
+      <if test="opVersion != null">
+        #{opVersion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sni.service.model.LogOperation">
+    update log_operation
+    <set>
+      <if test="opModule != null">
+        op_module = #{opModule,jdbcType=VARCHAR},
+      </if>
+      <if test="opType != null">
+        op_type = #{opType,jdbcType=VARCHAR},
+      </if>
+      <if test="opDesc != null">
+        op_desc = #{opDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="opMethod != null">
+        op_method = #{opMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="opReqTime != null">
+        op_req_time = #{opReqTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opReqParam != null">
+        op_req_param = #{opReqParam,jdbcType=VARCHAR},
+      </if>
+      <if test="opRespTime != null">
+        op_resp_time = #{opRespTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opRespParam != null">
+        op_resp_param = #{opRespParam,jdbcType=VARCHAR},
+      </if>
+      <if test="opIp != null">
+        op_ip = #{opIp,jdbcType=VARCHAR},
+      </if>
+      <if test="opUserId != null">
+        op_user_id = #{opUserId,jdbcType=INTEGER},
+      </if>
+      <if test="opUserName != null">
+        op_user_name = #{opUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="opUri != null">
+        op_uri = #{opUri,jdbcType=VARCHAR},
+      </if>
+      <if test="opVersion != null">
+        op_version = #{opVersion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sni.service.model.LogOperation">
+    update log_operation
+    set op_module = #{opModule,jdbcType=VARCHAR},
+      op_type = #{opType,jdbcType=VARCHAR},
+      op_desc = #{opDesc,jdbcType=VARCHAR},
+      op_method = #{opMethod,jdbcType=VARCHAR},
+      op_req_time = #{opReqTime,jdbcType=TIMESTAMP},
+      op_req_param = #{opReqParam,jdbcType=VARCHAR},
+      op_resp_time = #{opRespTime,jdbcType=TIMESTAMP},
+      op_resp_param = #{opRespParam,jdbcType=VARCHAR},
+      op_ip = #{opIp,jdbcType=VARCHAR},
+      op_user_id = #{opUserId,jdbcType=INTEGER},
+      op_user_name = #{opUserName,jdbcType=VARCHAR},
+      op_uri = #{opUri,jdbcType=VARCHAR},
+      op_version = #{opVersion,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

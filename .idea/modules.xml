@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/sni-parent.iml" filepath="$PROJECT_DIR$/sni-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sni-service/sni-service.iml" filepath="$PROJECT_DIR$/sni-service/sni-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sni-web/sni-web.iml" filepath="$PROJECT_DIR$/sni-web/sni-web.iml" />
+    </modules>
+  </component>
+</project>
